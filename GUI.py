@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 from tkinter import *
 
-import os
-import os.path
-import csv
-import sqlite3
 import tkinter as tk
 from tkinter import filedialog
 
