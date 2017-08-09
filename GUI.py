@@ -11,7 +11,7 @@ str1 = '                 '
 str2 = '    '
 frame = None
 temp_Label = None
-s = '/home/akiva/Desktop/%see%the bombers fly up.wav'
+s = '/home/akiva/Desktop/see the bombers fly up.wav'
 file_path = '/home/akiva/Desktop/%see%the bombers fly up.wav'
 
 
@@ -88,8 +88,16 @@ def FunForButtonClassifier(self):
 
         temp_Label.destroy()
 
-        classify(s)
-        Label(frame, text='File: ' + s + ' text= My name is zvika.').pack()
+
+
+        try:
+            input = classify(s)
+        except:
+            input = 'reset the program'
+        print(input)
+
+
+        Label(frame, text='File: ' + s + ' - '+input).pack()
 
         Label(frame, text=' ').pack(padx=250, pady=5)
 

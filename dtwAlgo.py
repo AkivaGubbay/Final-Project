@@ -8,7 +8,7 @@ from scipy.spatial.distance import euclidean
 from os import listdir
 from operator import itemgetter
 import ntpath
-jar_path = r'C:/Users/akiva/OneDrive/Coding_Projects/final_project/netbeans_workspace/FreeTTS-master'
+
 
 
 def get_audio_sentence(audio_file_path):
@@ -19,12 +19,14 @@ def get_audio_sentence(audio_file_path):
      print('trying to get audio sentence in dtwAlgo. The input file is NOT .wav')
 
 
-def algo(all_options_path, input_file_name):     # input_file_name -> must include dir + name.
+def algo(input_file_name):     # input_file_name -> must include dir + name.
 
+    all_options_path = r'/home/akiva/Documents/Do_not_delete/all_options_emphsis'
     audio_sentence = get_audio_sentence(input_file_name)
+    print('audio_sentence = ', audio_sentence)
     # creates all the emphasis options:
-    create_all_emph_options(all_options_path, audio_sentence)
-
+    a = create_all_emph_options(all_options_path, audio_sentence)
+    print('a=', a)
     # dtw:
     frames = 50  # 20
     first_frame = 30
@@ -42,10 +44,12 @@ def algo(all_options_path, input_file_name):     # input_file_name -> must inclu
     # Extract MFCCs from each permutation of 1 emphasized word
     file_names = []
     distances = []
-    for file_name in listdir('./DTW single file'):
+    #for file_name in listdir('./DTW single file'):
+    for file_name in listdir(all_options_path):
         print(file_name)
         file_names.append(file_name)
-        (rate, sig) = wav.read("./DTW single file/" + file_name)
+        #(rate, sig) = wav.read("./DTW single file/" + file_name)
+        (rate, sig) = wav.read(all_options_path + "/" + file_name)
         mfcc_feat = mfcc(sig, rate)
         curr = logfbank(sig, rate)
         current_file_data = curr[first_frame:(first_frame + frames), 0:mfccs] / 20
@@ -62,13 +66,11 @@ def algo(all_options_path, input_file_name):     # input_file_name -> must inclu
     start_end_indexes = [pos for pos, char in enumerate(s) if char == c]
     print(start_end_indexes)
     answer = file_names[min_distance_index][start_end_indexes[0] + 1:start_end_indexes[1]]
-    print(answer)
+    return answer
 '''
 all_options_path = r'C:/Users/akiva/Desktop/algo'
 input_file_name =
 audio_sentence = 'see the bombers fly up'
 '''
 
-
-
-
+#algo('/home/akiva/Desktop/see the bombers fly up.wav')
