@@ -32,6 +32,7 @@ def FunForButtonASR(self):
         Label(frame, text=' ').pack(padx=250, pady=5)
     _start_asr.bind('<Button>', startGoogleASR)
 
+    
 def FunForButtonClassifier(self):
     self.top = Toplevel()
     self.top.title("Classifier")
