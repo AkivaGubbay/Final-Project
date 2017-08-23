@@ -12,7 +12,7 @@ str2 = '    '
 frame = None
 temp_Label = None
 s = '/home/akiva/Desktop/see the bombers fly up.wav'
-file_path = '/home/akiva/Desktop/%see%the bombers fly up.wav'
+file_path = '/home/akiva/Desktop/see the bombers fly up.wav'
 
 
 def FunForButtonASR(self):

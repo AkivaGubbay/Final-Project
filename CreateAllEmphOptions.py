@@ -2,6 +2,7 @@ import subprocess
 import os
 import shutil
 from pydub import AudioSegment
+import ntpath
 
 jar_path = r'/home/akiva/Documents/Do_not_delete'
 
@@ -71,7 +72,7 @@ def create_all_emph_options(new_path, audio_name):
     emphasised_list = []
 
     # jar__name = speaker + '.jar'
-    jar__name = 'FreeTTS_kevin_mean2.5.jar'
+    jar__name = 'kevin_pitch120_rate70_volume085.jar'
 
     # create all emphasis options.
     for i, word in enumerate(sentence):  # i,line in enumerate(all_lines)
@@ -89,13 +90,13 @@ def create_all_emph_options(new_path, audio_name):
         # before:
         if before is not '':
             print('executed before')
-            subprocess.call(['cd', jar_path, '&&', 'java', '-jar', jar__name, tmp_file, before], shell=True)
+            subprocess.call(['cd '+ jar_path+ ' && '+ 'java'+ ' -jar '+  jar__name+' '+ tmp_file+ ' '+ before], shell=True)
         # emph:
         print('this is the call:', 'cd', jar_path, '&&', 'java', '-jar', jar__name, tmp_file, emph)
-        subprocess.call(['cd', jar_path, '&&', 'java', '-jar', jar__name, tmp_file, emph], shell=True)
+        subprocess.call(['cd '+ jar_path+ ' && '+ 'java '+ '-jar '+ jar__name+' '+tmp_file+' '+ emph], shell=True)
         # after:
         if after is not '':
-            subprocess.call(['cd', jar_path, '&&', 'java', '-jar', jar__name, tmp_file, after], shell=True)
+            subprocess.call(['cd '+ jar_path+ ' && '+ ' java '+ ' -jar '+ jar__name+ ' '+ tmp_file+' '+ after], shell=True)
 
         before_dir = tmp_file + '/' + before + ".wav"
         emph_dir = tmp_file + '/' + emph + ".wav"
@@ -119,8 +120,9 @@ def create_all_emph_options(new_path, audio_name):
         emphasised_list.append(new_path + '/' + word_emph)
     return emphasised_list
 
-
+'''
 all_options_path = r'/home/akiva/Documents/Do_not_delete/all_options_emphsis'
 audio_name = 'see the bombers fly up'
 ans = create_all_emph_options(all_options_path, audio_name)
 print(ans)
+'''

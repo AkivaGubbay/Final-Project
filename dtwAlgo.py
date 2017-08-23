@@ -68,8 +68,8 @@ def algo(input_file_name):     # input_file_name -> must include dir + name.
     answer = file_names[min_distance_index][start_end_indexes[0] + 1:start_end_indexes[1]]
     return answer
 '''
-all_options_path = r'C:/Users/akiva/Desktop/algo'
-input_file_name =
+all_options_path = r'/home/akiva/Documents/Do_not_delete/all_options_emphsis'
+input_file_name = r'/home/akiva/Desktop'
 audio_sentence = 'see the bombers fly up'
 '''
 
